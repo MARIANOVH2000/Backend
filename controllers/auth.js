@@ -82,14 +82,16 @@ const loginUsuario = async (req, res = response) => {
     });
   }
 };
-const revalidarToken = async(req, res) => {
+const revalidarToken = async (req, res) => {
   const uid = req.uid;
   const name = req.name;
   //generar el jwt
-  const token = await generarJWT(uid,name);
+  const token = await generarJWT(uid, name);
   res.json({
     ok: true,
-    token
+    token,
+    uid,
+    name,
   });
 };
 module.exports = {
